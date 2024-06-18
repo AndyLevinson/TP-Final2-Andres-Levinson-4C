@@ -9,6 +9,8 @@ public class CambiarObjeto : MonoBehaviour
     public GameObject[] Comida;
     public int currentindex = -1;
     public int currentindexantes = -2;
+    public int currentindexdsp = 0;
+
 
 
     // Start is called before the first frame update
@@ -28,14 +30,25 @@ public class CambiarObjeto : MonoBehaviour
 
             currentindex++;
             currentindexantes++;
+            currentindexdsp++;
 
             Cambiarcomida(currentindex);
-            Sacarcomida(currentindexantes);
+            Comida[currentindexantes].SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
 
+        {
+
+            currentindex--;
+            currentindexantes--;
+            currentindexdsp--;
+
+            Cambiarcomida(currentindex);
+            Comida[currentindexdsp].SetActive(false);
         }
 
 
-       
+
 
     }
 
@@ -62,42 +75,7 @@ public class CambiarObjeto : MonoBehaviour
     void Cambiarcomida(int index)
 
     {
-
-
-
         Comida[index].SetActive(true);
-
     }
 
-
-
-
-    void Sacarcomida(int index)
-
-    {
-
-
-
-        Comida[currentindexantes].SetActive(false);
-
-    }
-
-    void Sacarcomidaantes(int index)
-
-    {
-
-        currentindex--;
-        if (currentindex < 0)
-        {
-
-            currentindex = Comida.Length - 1;
-
-
-            Comida[currentindex].SetActive(false);
-
-        }
-
-        
-
-    }
 }
